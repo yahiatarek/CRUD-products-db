@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/CRUD.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CRUD system</title>
+  </head>
+  <body>
+    <section class="formSection">
+      <div class="container py-5">
+        <div class="form-group">
+          <label for="productName">Product Name</label>
+          <input type="text" class="form-control" id="productName" />
+        </div>
+        <div id="alert" class="alert alert-danger d-none">
+          First letter should be capital
+        </div>
+        <div class="form-group">
+          <label for="productPrice">Product Price</label>
+          <input type="number" id="productPrice" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="productCategory">Product Category</label>
+          <input type="text" id="productCategory" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="productDesc">Product Description</label>
+          <textarea
+            type="text"
+            id="productDesc"
+            class="form-control"
+          ></textarea>
+        </div>
+        <button id="updateButton" class="btn btn-lg btn-outline-info">
+          Submit
+        </button>
+        <div class="row my-3 align-content-center">
+          <div class="col-md-9 py-2">
+            <input
+              onkeyup="searchItem(this.value)"
+              class="form-control w-100 h-100 py-3"
+              type="text"
+              placeholder="Search"
+            />
+          </div>
+          <div class="col-md-3">
+            <label for="sorting" class="font-weight-bolder">Sort by</label>
+            <div class="d-flex">
+              <select class="w-75" name="sortByOptions" id="sorting">
+                <option value="name">name</option>
+                <option value="price">price</option>
+              </select>
+              <button
+                id="sortingButton"
+                onmousedown="checkSort()"
+                class="badge badge-secondary mx-2"
+              >
+                Sort
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="tableDatabase">
+      <div class="container py-0 px-5">
+        <table class="table table-hover table-dark striped table-bordered">
+          <thead class="thead-light">
+            <th>index</th>
+            <th>Product Name</th>
+            <th>Product Price</th>
+            <th>Product Category</th>
+            <th>Product Description</th>
+            <th>Product Update</th>
+            <th>Product Delete</th>
+          </thead>
+          <tbody id="eachRow"></tbody>
+        </table>
+      </div>
+    </section>
+    <script src="js/CRUD.js"></script>
+  </body>
+</html>
